@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.HomeActivity">
+
+    <item
+        android:id="@+id/action_share_health"
+        android:icon="@drawable/ic_share_24dp"
+        android:orderInCategory="90"
+        android:title="@string/lbl_share_the_health"
+        app:showAsAction="ifRoom" />
+
+</menu>
