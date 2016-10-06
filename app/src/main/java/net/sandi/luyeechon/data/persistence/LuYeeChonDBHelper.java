@@ -51,26 +51,26 @@ public class LuYeeChonDBHelper extends SQLiteOpenHelper {
             " UNIQUE (" + QuizEntry.COLUMN_TITLE + "  ) ON CONFLICT IGNORE" +
             " );";
 
-    private static final String SQL_CREATE_FAVOURITE_JOKE_TABLE = "CREATE TABLE " + FavouriteJokesEntry.TABLE_NAME + " (" +
-            FavouriteJokesEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            FavouriteJokesEntry.COLUMN_TITLE + " TEXT NOT NULL, "+
-            FavouriteJokesEntry.COLUMN_PHOTO + " TEXT NOT NULL, "+
-            FavouriteJokesEntry.COLUMN_DES + " TEXT NOT NULL, "+
-            FavouriteJokesEntry.COLUMN_FAV + " TEXT NOT NULL, "+
-
-            " UNIQUE (" + FavouriteJokesEntry.COLUMN_TITLE + ") ON CONFLICT IGNORE" +  // can't duplicate
-            " );";
-
-    private static final String SQL_CREATE_FAVOURITE_HEALTH_TABLE = "CREATE TABLE " + FavouriteHealthsEntry.TABLE_NAME + " (" +
-            FavouriteHealthsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            FavouriteHealthsEntry.COLUMN_TITLE + " TEXT NOT NULL, "+
-            FavouriteHealthsEntry.COLUMN_PHOTO + " TEXT NOT NULL, "+
-            FavouriteHealthsEntry.COLUMN_DES + " TEXT NOT NULL, "+
-            FavouriteHealthsEntry.COLUMN_TYPE + " TEXT NOT NULL, "+
-            FavouriteHealthsEntry.COLUMN_FAV + " TEXT NOT NULL, "+
-
-            " UNIQUE (" + FavouriteHealthsEntry.COLUMN_TITLE + ") ON CONFLICT IGNORE" +  // can't duplicate
-            " );";
+//    private static final String SQL_CREATE_FAVOURITE_JOKE_TABLE = "CREATE TABLE " + FavouriteJokesEntry.TABLE_NAME + " (" +
+//            FavouriteJokesEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//            FavouriteJokesEntry.COLUMN_TITLE + " TEXT NOT NULL, "+
+//            FavouriteJokesEntry.COLUMN_PHOTO + " TEXT NOT NULL, "+
+//            FavouriteJokesEntry.COLUMN_DES + " TEXT NOT NULL, "+
+//            FavouriteJokesEntry.COLUMN_FAV + " TEXT NOT NULL, "+
+//
+//            " UNIQUE (" + FavouriteJokesEntry.COLUMN_TITLE + ") ON CONFLICT IGNORE" +  // can't duplicate
+//            " );";
+//
+//    private static final String SQL_CREATE_FAVOURITE_HEALTH_TABLE = "CREATE TABLE " + FavouriteHealthsEntry.TABLE_NAME + " (" +
+//            FavouriteHealthsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//            FavouriteHealthsEntry.COLUMN_TITLE + " TEXT NOT NULL, "+
+//            FavouriteHealthsEntry.COLUMN_PHOTO + " TEXT NOT NULL, "+
+//            FavouriteHealthsEntry.COLUMN_DES + " TEXT NOT NULL, "+
+//            FavouriteHealthsEntry.COLUMN_TYPE + " TEXT NOT NULL, "+
+//            FavouriteHealthsEntry.COLUMN_FAV + " TEXT NOT NULL, "+
+//
+//            " UNIQUE (" + FavouriteHealthsEntry.COLUMN_TITLE + ") ON CONFLICT IGNORE" +  // can't duplicate
+//            " );";
     public LuYeeChonDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -81,8 +81,8 @@ public class LuYeeChonDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_JOKE_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_MOTIVATOR_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_QUIZ_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_FAVOURITE_JOKE_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_FAVOURITE_HEALTH_TABLE);
+//        sqLiteDatabase.execSQL(SQL_CREATE_FAVOURITE_JOKE_TABLE);
+//        sqLiteDatabase.execSQL(SQL_CREATE_FAVOURITE_HEALTH_TABLE);
     }
 
     @Override
@@ -91,8 +91,8 @@ public class LuYeeChonDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + JokeEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MotivatorEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + QuizEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + FavouriteJokesEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + FavouriteHealthsEntry.TABLE_NAME);
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + FavouriteJokesEntry.TABLE_NAME);
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + FavouriteHealthsEntry.TABLE_NAME);
 
         onCreate(sqLiteDatabase);
     }

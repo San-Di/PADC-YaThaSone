@@ -3,7 +3,6 @@ package net.sandi.luyeechon.data.vos;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -80,19 +79,19 @@ public class JokeVO {
         Log.d(LuYeeChonApp.TAG, "Bulk inserted into joke table : " + insertedCount);
     }
 
-    public static void saveFavouriteJoke(JokeVO jokeVO,String fav){
-        Context context = LuYeeChonApp.getContext();
-        ContentValues jokeCV = new ContentValues();
-        jokeCV = jokeVO.parseToContentValues(fav);
-
-        Uri insertedUri= context.getContentResolver().insert(LuYeeChonContract.FavouriteJokesEntry.CONTENT_URI, jokeCV);
-
-    }
-    public static void removeFavouriteJoke(JokeVO joke){
-        Context context = LuYeeChonApp.getContext();
-        int removedUri= context.getContentResolver().delete(LuYeeChonContract.FavouriteJokesEntry.CONTENT_URI, "title=?",new String[]{joke.getJokeTitle()});
-
-    }
+//    public static void saveFavouriteJoke(JokeVO jokeVO,String fav){
+//        Context context = LuYeeChonApp.getContext();
+//        ContentValues jokeCV = new ContentValues();
+//        jokeCV = jokeVO.parseToContentValues(fav);
+//
+////        Uri insertedUri= context.getContentResolver().insert(LuYeeChonContract.FavouriteJokesEntry.CONTENT_URI, jokeCV);
+//
+//    }
+//    public static void removeFavouriteJoke(JokeVO joke){
+//        Context context = LuYeeChonApp.getContext();
+//        int removedUri= context.getContentResolver().delete(LuYeeChonContract.FavouriteJokesEntry.CONTENT_URI, "title=?",new String[]{joke.getJokeTitle()});
+//
+//    }
 
     private ContentValues parseToContentValues(String fav) {
         ContentValues cv = new ContentValues();
@@ -112,15 +111,15 @@ public class JokeVO {
         return joke;
     }
 
-    public static JokeVO parseFromCursorFavourite(Cursor data){
-        JokeVO joke = new JokeVO();
-        joke.jokeTitle = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_TITLE));
-        joke.jokeDes = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_DES
-        ));
-        joke.imageJoke = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_PHOTO));
-        joke.fav = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_FAV));
-        return joke;
-    }
+//    public static JokeVO parseFromCursorFavourite(Cursor data){
+//        JokeVO joke = new JokeVO();
+//        joke.jokeTitle = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_TITLE));
+//        joke.jokeDes = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_DES
+//        ));
+//        joke.imageJoke = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_PHOTO));
+//        joke.fav = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteJokesEntry.COLUMN_FAV));
+//        return joke;
+//    }
 
     public static boolean isJokeFav(JokeVO joke){
         boolean favBoolean = false;

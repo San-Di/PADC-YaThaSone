@@ -20,17 +20,17 @@
         android:icon="@drawable/ic_local_library_black_24dp1"
         android:title="@string/menu_health_topics"/>
 </group>
-<group
-    android:id="@+id/menu_fav"
-    android:checkableBehavior="single">
-    <item
-        android:id="@+id/menu_fav_joke"
-        android:icon="@drawable/ic_favorite_full_black_24dp"
-        android:title="@string/menu_fav_joke"/>
+<!--<group-->
+    <!--android:id="@+id/menu_fav"-->
+    <!--android:checkableBehavior="single">-->
+    <!--<item-->
+        <!--android:id="@+id/menu_fav_joke"-->
+        <!--android:icon="@drawable/ic_favorite_full_black_24dp"-->
+        <!--android:title="@string/menu_fav_joke"/>-->
 
-    <item
-        android:id="@+id/menu_fav_health"
-        android:icon="@drawable/ic_favorite_full_black_24dp"
-        android:title="@string/menu_fav_health"/>
-</group>
+    <!--<item-->
+        <!--android:id="@+id/menu_fav_health"-->
+        <!--android:icon="@drawable/ic_favorite_full_black_24dp"-->
+        <!--android:title="@string/menu_fav_health"/>-->
+<!--</group>-->
 </menu>

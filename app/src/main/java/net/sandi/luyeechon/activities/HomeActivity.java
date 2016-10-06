@@ -21,8 +21,6 @@ import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.HealthVO;
 import net.sandi.luyeechon.data.vos.JokeVO;
 import net.sandi.luyeechon.data.vos.MotivatorVO;
-import net.sandi.luyeechon.fragments.FavouriteHealthFragment;
-import net.sandi.luyeechon.fragments.FavouriteJokeFragment;
 import net.sandi.luyeechon.fragments.HealthFragment;
 import net.sandi.luyeechon.fragments.JokeFragment;
 import net.sandi.luyeechon.fragments.MotivatorFragment;
@@ -129,12 +127,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     case R.id.menu_short_jokes:
                         navigateToJoke();
                         break;
-                    case R.id.menu_fav_joke:
-                        navigateToFavJoke();
-                        break;
-                    case R.id.menu_fav_health:
-                        navigateToFavHealth();
-                        break;
+//                    case R.id.menu_fav_joke:
+//                        navigateToFavJoke();
+//                        break;
+//                    case R.id.menu_fav_health:
+//                        navigateToFavHealth();
+//                        break;
 
                 }
             }
@@ -152,21 +150,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
-    public void navigateToFavJoke(){
-        tvScreenTitle.setText(R.string.menu_short_jokes);
-        FavouriteJokeFragment favouriteJokeFragment = FavouriteJokeFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fl_container,favouriteJokeFragment)
-                .commit();
-    }
-
-    public void navigateToFavHealth(){
-        tvScreenTitle.setText(R.string.menu_health_topics);
-        FavouriteHealthFragment favouriteHealthFragment = FavouriteHealthFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fl_container,favouriteHealthFragment)
-                .commit();
-    }
+//    public void navigateToFavJoke(){
+//        tvScreenTitle.setText(R.string.menu_short_jokes);
+//        FavouriteJokeFragment favouriteJokeFragment = FavouriteJokeFragment.newInstance();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fl_container,favouriteJokeFragment)
+//                .commit();
+//    }
+//
+//    public void navigateToFavHealth(){
+//        tvScreenTitle.setText(R.string.menu_health_topics);
+//        FavouriteHealthFragment favouriteHealthFragment = FavouriteHealthFragment.newInstance();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.fl_container,favouriteHealthFragment)
+//                .commit();
+//    }
     public void navigateToJoke(){
         tvScreenTitle.setText(R.string.menu_short_jokes);
         //  actionBar.setTitle(R.string.menu_short_jokes);

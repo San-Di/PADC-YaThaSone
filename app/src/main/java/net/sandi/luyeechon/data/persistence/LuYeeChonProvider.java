@@ -17,15 +17,15 @@ public class LuYeeChonProvider extends ContentProvider {
     public static final int JOKES = 200;
     public static final int MOTIVATOR = 300;
     public static final int QUIZ = 400;
-    public static final int FAV_JOKE = 500;
-    public static final int FAV_HEALTH = 600;
+//    public static final int FAV_JOKE = 500;
+//    public static final int FAV_HEALTH = 600;
 
     private static final String sHealthTitleSelection = LuYeeChonContract.HealthEntry.COLUMN_TITLE + " = ?";
     private static final String sJokeTitleSelection = LuYeeChonContract.JokeEntry.COLUMN_TITLE + " = ?";
     private static final String sAttractionTitleSelection = LuYeeChonContract.MotivatorEntry.COLUMN_TITLE + " = ?";
     private static final String sQuizTitleSelection = LuYeeChonContract.QuizEntry.COLUMN_TITLE + " = ?";
-    private static final String sFavJokeTitleSelection = LuYeeChonContract.FavouriteJokesEntry.COLUMN_TITLE + " =?";
-    private static final String sFavHealthTitleSelection = LuYeeChonContract.FavouriteHealthsEntry.COLUMN_TITLE + " =?";
+//    private static final String sFavJokeTitleSelection = LuYeeChonContract.FavouriteJokesEntry.COLUMN_TITLE + " =?";
+//    private static final String sFavHealthTitleSelection = LuYeeChonContract.FavouriteHealthsEntry.COLUMN_TITLE + " =?";
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private LuYeeChonDBHelper mLuYeeChonDBHelper;
@@ -107,35 +107,35 @@ public class LuYeeChonProvider extends ContentProvider {
                         sortOrder);
                 break;
 
-            case FAV_JOKE:
-                String favouriteJokeTitle = LuYeeChonContract.FavouriteJokesEntry.getTitleFromParam(uri);
-                if (!TextUtils.isEmpty(favouriteJokeTitle)) {
-                    selection = sFavJokeTitleSelection;
-                    selectionArgs = new String[]{favouriteJokeTitle};
-                }
-                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(LuYeeChonContract.FavouriteJokesEntry.TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null, //group_by
-                        null, //having
-                        sortOrder);
-                break;
-
-            case FAV_HEALTH:
-                String favHealthTitle = LuYeeChonContract.FavouriteHealthsEntry.getTitleFromParam(uri);
-                if (!TextUtils.isEmpty(favHealthTitle)) {
-                    selection = sFavHealthTitleSelection;
-                    selectionArgs = new String[]{favHealthTitle};
-                }
-                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(LuYeeChonContract.FavouriteHealthsEntry.TABLE_NAME,
-                        projection,
-                        selection,
-                        selectionArgs,
-                        null, //group_by
-                        null, //having
-                        sortOrder);
-                break;
+//            case FAV_JOKE:
+//                String favouriteJokeTitle = LuYeeChonContract.FavouriteJokesEntry.getTitleFromParam(uri);
+//                if (!TextUtils.isEmpty(favouriteJokeTitle)) {
+//                    selection = sFavJokeTitleSelection;
+//                    selectionArgs = new String[]{favouriteJokeTitle};
+//                }
+//                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(LuYeeChonContract.FavouriteJokesEntry.TABLE_NAME,
+//                        projection,
+//                        selection,
+//                        selectionArgs,
+//                        null, //group_by
+//                        null, //having
+//                        sortOrder);
+//                break;
+//
+//            case FAV_HEALTH:
+//                String favHealthTitle = LuYeeChonContract.FavouriteHealthsEntry.getTitleFromParam(uri);
+//                if (!TextUtils.isEmpty(favHealthTitle)) {
+//                    selection = sFavHealthTitleSelection;
+//                    selectionArgs = new String[]{favHealthTitle};
+//                }
+//                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(LuYeeChonContract.FavouriteHealthsEntry.TABLE_NAME,
+//                        projection,
+//                        selection,
+//                        selectionArgs,
+//                        null, //group_by
+//                        null, //having
+//                        sortOrder);
+//                break;
 
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
@@ -167,11 +167,11 @@ public class LuYeeChonProvider extends ContentProvider {
             case QUIZ:
                 return LuYeeChonContract.QuizEntry.DIR_TYPE;
 
-            case FAV_JOKE:
-                return LuYeeChonContract.FavouriteJokesEntry.DIR_TYPE;
-
-            case FAV_HEALTH:
-                return  LuYeeChonContract.FavouriteHealthsEntry.DIR_TYPE;
+//            case FAV_JOKE:
+//                return LuYeeChonContract.FavouriteJokesEntry.DIR_TYPE;
+//
+//            case FAV_HEALTH:
+//                return  LuYeeChonContract.FavouriteHealthsEntry.DIR_TYPE;
 
 
             default:
@@ -231,24 +231,24 @@ public class LuYeeChonProvider extends ContentProvider {
                 }
                 break;
             }
-            case FAV_JOKE: {
-                long _id = db.insert(LuYeeChonContract.FavouriteJokesEntry.TABLE_NAME, null, contentValues);
-                if (_id > 0) {
-                    insertedUri = LuYeeChonContract.FavouriteJokesEntry.buildFavouriteJokeUri(_id);
-                } else {
-                    throw new SQLException("Failed to insert row into " + uri);
-                }
-                break;
-            }
-            case FAV_HEALTH: {
-                long _id = db.insert(LuYeeChonContract.FavouriteHealthsEntry.TABLE_NAME, null, contentValues);
-                if (_id > 0) {
-                    insertedUri = LuYeeChonContract.FavouriteHealthsEntry.buildFavouriteHealthUri(_id);
-                } else {
-                    throw new SQLException("Failed to insert row into " + uri);
-                }
-                break;
-            }
+//            case FAV_JOKE: {
+//                long _id = db.insert(LuYeeChonContract.FavouriteJokesEntry.TABLE_NAME, null, contentValues);
+//                if (_id > 0) {
+//                    insertedUri = LuYeeChonContract.FavouriteJokesEntry.buildFavouriteJokeUri(_id);
+//                } else {
+//                    throw new SQLException("Failed to insert row into " + uri);
+//                }
+//                break;
+//            }
+//            case FAV_HEALTH: {
+//                long _id = db.insert(LuYeeChonContract.FavouriteHealthsEntry.TABLE_NAME, null, contentValues);
+//                if (_id > 0) {
+//                    insertedUri = LuYeeChonContract.FavouriteHealthsEntry.buildFavouriteHealthUri(_id);
+//                } else {
+//                    throw new SQLException("Failed to insert row into " + uri);
+//                }
+//                break;
+//            }
 
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
@@ -334,8 +334,8 @@ public class LuYeeChonProvider extends ContentProvider {
         uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_JOKES, JOKES);
         uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_MOTIVATOR, MOTIVATOR);
         uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_QUIZ, QUIZ);
-        uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_FAVOURITE_JOKES, FAV_JOKE);
-        uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_FAVOURITE_HEALTHS, FAV_HEALTH);
+//        uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_FAVOURITE_JOKES, FAV_JOKE);
+//        uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_FAVOURITE_HEALTHS, FAV_HEALTH);
 
         return uriMatcher;
     }
@@ -357,11 +357,11 @@ public class LuYeeChonProvider extends ContentProvider {
             case QUIZ:
                 return LuYeeChonContract.QuizEntry.TABLE_NAME;
 
-            case FAV_JOKE:
-                return LuYeeChonContract.FavouriteJokesEntry.TABLE_NAME;
-
-            case FAV_HEALTH:
-                return LuYeeChonContract.FavouriteHealthsEntry.TABLE_NAME;
+//            case FAV_JOKE:
+//                return LuYeeChonContract.FavouriteJokesEntry.TABLE_NAME;
+//
+//            case FAV_HEALTH:
+//                return LuYeeChonContract.FavouriteHealthsEntry.TABLE_NAME;
 
 
 

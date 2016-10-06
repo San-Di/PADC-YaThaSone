@@ -11,12 +11,10 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -91,19 +89,24 @@ public class HealthDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mHealth.getFav().equals("1")) {
-                    mHealth.setFav("0");
-                    fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-                    HealthVO.removeFavouriteHealth(mHealth);
-                    Toast.makeText(LuYeeChonApp.getContext(),mHealth.getHealthTitle()+" is removed from Favourite",Toast.LENGTH_LONG).show();
-                }
-                else if(mHealth.getFav().equals("0")) {
-                    mHealth.setFav("1");
-                    fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
-                    HealthVO.saveFavouriteHealths(mHealth,mHealth.getFav());
-                  Toast.makeText(LuYeeChonApp.getContext(),mHealth.getHealthTitle()+" is added to Favourite",Toast.LENGTH_LONG).show();
+//                if(mHealth.getFav().equals("1")) {
+//                    mHealth.setFav("0");
+//                    fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+//                    HealthVO.removeFavouriteHealth(mHealth);
+//                    Toast.makeText(LuYeeChonApp.getContext(),mHealth.getHealthTitle()+" is removed from Favourite",Toast.LENGTH_LONG).show();
+//                }
+//                else if(mHealth.getFav().equals("0")) {
+//                    mHealth.setFav("1");
+//                    fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+//                    HealthVO.saveFavouriteHealths(mHealth,mHealth.getFav());
+//                  Toast.makeText(LuYeeChonApp.getContext(),mHealth.getHealthTitle()+" is added to Favourite",Toast.LENGTH_LONG).show();
+//
+//                }
+                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(HealthDetailActivity.this)
+                        .setType("text/plain")
+                        .setText(mHealth.getHealthTitle() + " \n\n\n " + mHealth.getHealthDes())
+                        .getIntent(), getString(R.string.action_share)));
 
-                }
             }
         });
 
@@ -134,25 +137,25 @@ public class HealthDetailActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_health_detail_screen, menu);
-
-        MenuItem shareItem = menu.findItem(R.id.action_share_health);
-
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(HealthDetailActivity.this)
-                        .setType("text/plain")
-                        .setText(mHealth.getHealthTitle() + " \n\n\n " + mHealth.getHealthDes())
-                        .getIntent(), getString(R.string.action_share)));
-                return true;
-            }
-        });
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.menu_health_detail_screen, menu);
+//
+//        MenuItem shareItem = menu.findItem(R.id.action_share_health);
+//
+//        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menuItem) {
+//                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(HealthDetailActivity.this)
+//                        .setType("text/plain")
+//                        .setText(mHealth.getHealthTitle() + " \n\n\n " + mHealth.getHealthDes())
+//                        .getIntent(), getString(R.string.action_share)));
+//                return true;
+//            }
+//        });
+//        return true;
+//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

@@ -3,7 +3,6 @@ package net.sandi.luyeechon.data.vos;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
@@ -86,19 +85,19 @@ public class HealthVO {
         Log.d(LuYeeChonApp.TAG, "Bulk inserted into health table : " + insertedCount);
     }
 
-    public static void saveFavouriteHealths(HealthVO health,String fav){
-        Context context = LuYeeChonApp.getContext();
-        ContentValues healthCV = new ContentValues();
-        healthCV = health.parseToContentValues(fav);
-        Uri insertedUri= context.getContentResolver().insert(LuYeeChonContract.FavouriteHealthsEntry.CONTENT_URI, healthCV);
-
-    }
-
-    public static void removeFavouriteHealth(HealthVO health){
-        Context context = LuYeeChonApp.getContext();
-        int removedUri= context.getContentResolver().delete(LuYeeChonContract.FavouriteHealthsEntry.CONTENT_URI, "title=?",new String[]{health.getHealthTitle()});
-
-    }
+//    public static void saveFavouriteHealths(HealthVO health,String fav){
+//        Context context = LuYeeChonApp.getContext();
+//        ContentValues healthCV = new ContentValues();
+//        healthCV = health.parseToContentValues(fav);
+//        Uri insertedUri= context.getContentResolver().insert(LuYeeChonContract.FavouriteHealthsEntry.CONTENT_URI, healthCV);
+//
+//    }
+//
+//    public static void removeFavouriteHealth(HealthVO health){
+//        Context context = LuYeeChonApp.getContext();
+//        int removedUri= context.getContentResolver().delete(LuYeeChonContract.FavouriteHealthsEntry.CONTENT_URI, "title=?",new String[]{health.getHealthTitle()});
+//
+//    }
 
 
     private ContentValues parseToContentValues(String fav) {
@@ -121,14 +120,14 @@ public class HealthVO {
         return health;
     }
 
-    public static HealthVO parseFromCursorFavourite(Cursor data){
-        HealthVO health = new HealthVO();
-        health.healthTitle = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_TITLE));
-        health.healthDes = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_DES
-        ));
-        health.type = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_TYPE));
-        health.image = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_PHOTO));
-        health.fav = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_FAV));
-        return health;
-    }
+//    public static HealthVO parseFromCursorFavourite(Cursor data){
+//        HealthVO health = new HealthVO();
+//        health.healthTitle = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_TITLE));
+//        health.healthDes = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_DES
+//        ));
+//        health.type = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_TYPE));
+//        health.image = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_PHOTO));
+//        health.fav = data.getString(data.getColumnIndex(LuYeeChonContract.FavouriteHealthsEntry.COLUMN_FAV));
+//        return health;
+//    }
 }

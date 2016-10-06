@@ -11,12 +11,10 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -62,24 +60,24 @@ public class JokeDetailActivity extends AppCompatActivity {
         mJoke=joke;
         return intent;
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_joke_detail_screen, menu);
-
-        MenuItem shareItem = menu.findItem(R.id.action_share_joke);
-        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(JokeDetailActivity.this)
-                .setType("text/plain")
-                .setText(mJoke.getJokeTitle() + " \n\n\n " + mJoke.getJokeDes())
-                .getIntent(), getString(R.string.action_share)));
-                return true;
-            }
-        });
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        getMenuInflater().inflate(R.menu.menu_joke_detail_screen, menu);
+//
+//        MenuItem shareItem = menu.findItem(R.id.action_share_joke);
+//        shareItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menuItem) {
+//                startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(JokeDetailActivity.this)
+//                .setType("text/plain")
+//                .setText(mJoke.getJokeTitle() + " \n\n\n " + mJoke.getJokeDes())
+//                .getIntent(), getString(R.string.action_share)));
+//                return true;
+//            }
+//        });
+//        return true;
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,18 +108,25 @@ public class JokeDetailActivity extends AppCompatActivity {
         fabJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mJoke.getFav().equals("1")) {
-                    JokeVO.removeFavouriteJoke(mJoke);
-                    fabJoke.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-                    Toast.makeText(LuYeeChonApp.getContext(),mJoke.getJokeTitle()+" is removed from Favourite",Toast.LENGTH_LONG).show();
+//                if(mJoke.getFav().equals("1")) {
+//                    JokeVO.removeFavouriteJoke(mJoke);
+//                    fabJoke.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+//                    Toast.makeText(LuYeeChonApp.getContext(),mJoke.getJokeTitle()+" is removed from Favourite",Toast.LENGTH_LONG).show();
+//
+//                }
+//                else if(mJoke.getFav().equals("0")) {
+//                    mJoke.setFav("1");
+//                    fabJoke.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
+//                    JokeVO.saveFavouriteJoke(mJoke,"1");
+//                    Toast.makeText(LuYeeChonApp.getContext(),mJoke.getJokeTitle()+" is added from Favourite",Toast.LENGTH_LONG).show();
+//                }
 
-                }
-                else if(mJoke.getFav().equals("0")) {
-                    mJoke.setFav("1");
-                    fabJoke.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.red)));
-                    JokeVO.saveFavouriteJoke(mJoke,"1");
-                    Toast.makeText(LuYeeChonApp.getContext(),mJoke.getJokeTitle()+" is added from Favourite",Toast.LENGTH_LONG).show();
-                }
+                        startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(JokeDetailActivity.this)
+                                .setType("text/plain")
+                                .setText(mJoke.getJokeTitle() + " \n\n\n " + mJoke.getJokeDes())
+                                .getIntent(), getString(R.string.action_share)));
+
+
             }
         });
         mJokeTitle = getIntent().getStringExtra(IE_JOKE_TOPIC_NAME);
